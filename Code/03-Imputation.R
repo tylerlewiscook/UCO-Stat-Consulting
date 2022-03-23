@@ -30,3 +30,16 @@ nhanes2$hyp <- as.factor(nhanes2$hyp)
 imp4 <- missForest(nhanes2)
 imp4
 imp4$ximp
+
+
+# KNN --------------------------------------------------------------------------
+# https://www.bioconductor.org/packages/release/bioc/html/impute.html
+
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("impute")
+
+library(impute)
+imp5 <- impute.knn(nhanes)
+imp5 <- impute.knn(as.matrix(nhanes))
